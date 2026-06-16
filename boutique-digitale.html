@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boutique Digitale | المنصة التعليمية الجزائرية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #080516;
+  --bg2:      #110828;
+  --card:     rgba(255,255,255,0.045);
+  --card-h:   rgba(255,255,255,0.085);
+  --orange:   #FF6B00;
+  --orange-l: #FF9A3C;
+  --gold:     #FFD166;
+  --yellow:   #FFDF06;
+  --green:    #25D366;
+  --green-d:  #128C7E;
+  --text:     #EDE9FF;
+  --muted:    rgba(237,233,255,0.5);
+  --dim:      rgba(237,233,255,0.28);
+  --border:   rgba(255,255,255,0.09);
+  --bord-o:   rgba(255,107,0,0.35);
+  --bord-y:   rgba(255,223,6,0.25);
+  --sh-o:     0 8px 32px rgba(255,107,0,0.38);
+  --sh-g:     0 8px 28px rgba(37,211,102,0.42);
+  --r:        16px;
+  --r-sm:     10px;
+  --r-pill:   100px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none}
+
+/* ─── ORBS ─── */
+.orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px)}
+.o1{width:700px;height:700px;background:rgba(255,107,0,.11);top:-250px;right:-200px;animation:fl1 14s ease-in-out infinite}
+.o2{width:550px;height:550px;background:rgba(100,30,200,.1);bottom:-180px;left:-180px;animation:fl2 17s ease-in-out infinite}
+.o3{width:350px;height:350px;background:rgba(255,209,6,.06);top:55%;left:48%;transform:translate(-50%,-50%);animation:fl3 11s ease-in-out infinite}
+@keyframes fl1{0%,100%{transform:translate(0,0)}50%{transform:translate(-28px,28px)}}
+@keyframes fl2{0%,100%{transform:translate(0,0)}50%{transform:translate(28px,-28px)}}
+@keyframes fl3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.18)}}
+
+.wrap{max-width:940px;margin:0 auto;padding:0 16px;position:relative;z-index:1}
+
+/* ─── NAVBAR ─── */
+.nav{
+  position:sticky;top:0;z-index:900;
+  background:rgba(8,5,22,.82);backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--border);padding:0 20px
+}
+.nav-i{
+  max-width:940px;margin:0 auto;height:62px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px
+}
+.logo{
+  font-family:'Tajawal',sans-serif;font-size:1.35rem;font-weight:900;
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-.03em;flex-shrink:0
+}
+.nav-links{display:flex;gap:2px}
+.nl{
+  padding:7px 13px;border-radius:var(--r-pill);border:none;background:none;
+  color:var(--muted);font-family:'Cairo',sans-serif;font-size:.83rem;font-weight:600;
+  cursor:pointer;transition:all .2s
+}
+.nl:hover,.nl.act{color:var(--orange);background:rgba(255,107,0,.08)}
+.admin-btn{
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
+  padding:8px 18px;border-radius:var(--r-pill);
+  background:linear-gradient(135deg,var(--orange),var(--orange-l));
+  color:#fff;border:none;cursor:pointer;font-family:'Cairo',sans-serif;
+  font-size:.82rem;font-weight:700;box-shadow:0 4px 18px rgba(255,107,0,.38);
+  transition:all .3s
+}
+.admin-btn:hover{transform:translateY(-2px);box-shadow:var(--sh-o)}
+
+/* ─── HERO ─── */
+.hero{padding:58px 0 46px;text-align:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,209,6,.1);border:1px solid var(--bord-y);
+  color:var(--yellow);padding:6px 18px;border-radius:var(--r-pill);
+  font-size:.8rem;font-weight:700;margin-bottom:22px;animation:fd .6s ease both
+}
+.bdot{width:7px;height:7px;background:var(--yellow);border-radius:50%;animation:blink 1.5s infinite}
+.hero h1{
+  font-family:'Tajawal',sans-serif;font-size:clamp(2.1rem,5.5vw,3.5rem);
+  font-weight:900;line-height:1.15;letter-spacing:-.035em;margin-bottom:14px;
+  animation:fd .6s ease .1s both
+}
+.hero h1 .gr{
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.hero p{
+  font-size:1.02rem;color:var(--muted);max-width:480px;margin:0 auto 30px;
+  line-height:1.75;animation:fd .6s ease .2s both
+}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:46px;animation:fd .6s ease .3s both}
+.btn-p{
+  padding:13px 28px;border-radius:var(--r-pill);
+  background:linear-gradient(135deg,var(--orange),var(--orange-l));
+  color:#fff;border:none;cursor:pointer;font-family:'Cairo',sans-serif;
+  font-size:.93rem;font-weight:700;box-shadow:var(--sh-o);transition:all .3s
+}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(255,107,0,.5)}
+.btn-o{
+  padding:12px 28px;border-radius:var(--r-pill);background:transparent;
+  color:var(--text);border:1.5px solid var(--border);font-family:'Cairo',sans-serif;
+  font-size:.93rem;font-weight:700;cursor:pointer;transition:all .3s
+}
+.btn-o:hover{border-color:var(--orange);color:var(--orange);background:rgba(255,107,0,.07)}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;animation:fu .6s ease .4s both}
+.stat{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:18px 12px;text-align:center;transition:all .3s
+}
+.stat:hover{border-color:var(--bord-o);transform:translateY(-2px)}
+.stat-n{
+  font-family:'Tajawal',sans-serif;font-size:1.85rem;font-weight:900;
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.stat-l{font-size:.73rem;color:var(--muted);margin-top:4px}
+
+/* ─── PROMO ─── */
+.promo-wrap{padding:8px 0 22px}
+.promo{
+  background:linear-gradient(140deg,#0b2318,#103320);
+  border:1.5px solid rgba(82,183,136,.45);border-radius:22px;
+  padding:26px;position:relative;overflow:hidden
+}
+.promo::before{
+  content:'🔥';position:absolute;
+  font-size:7rem;left:-12px;top:-12px;opacity:.1;pointer-events:none
+}
+.promo-tag-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.promo-tag{
+  font-family:'Tajawal',sans-serif;font-size:1.05rem;font-weight:800;color:#b7e4c7;
+  display:flex;align-items:center;gap:8px
+}
+.tag-pill{
+  background:#ff6b6b;color:#fff;font-size:.62rem;
+  padding:2px 9px;border-radius:var(--r-pill);font-weight:700;animation:blink 1.5s infinite
+}
+.promo-price{
+  font-family:'Tajawal',sans-serif;font-size:2.5rem;font-weight:900;
+  color:#52b788;line-height:1;margin:10px 0
+}
+.promo-price span{font-size:.88rem;font-weight:400;color:var(--muted)}
+.promo-desc{font-size:.87rem;color:rgba(255,255,255,.72);line-height:1.6}
+.promo-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ptag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.25);
+  color:var(--gold);padding:5px 12px;border-radius:var(--r-pill);
+  font-size:.77rem;font-weight:700
+}
+.promo-phone{
+  margin-top:16px;background:rgba(0,0,0,.25);
+  border:1.5px solid var(--green);border-radius:var(--r);
+  padding:14px 18px;display:flex;align-items:center;gap:14px
+}
+.ph-icon{font-size:1.7rem}
+.ph-lbl{font-size:.7rem;color:var(--dim);margin-bottom:3px}
+.ph-num{
+  font-family:'Tajawal',sans-serif;font-size:1.55rem;font-weight:900;
+  color:var(--green);letter-spacing:3px;direction:ltr;display:block
+}
+
+/* ─── SECTION HEADER ─── */
+.sec-h{text-align:center;margin-bottom:28px}
+.sec-badge{
+  display:inline-block;background:rgba(255,107,0,.1);
+  border:1px solid rgba(255,107,0,.28);color:var(--orange);
+  padding:4px 16px;border-radius:var(--r-pill);font-size:.77rem;font-weight:700;margin-bottom:12px
+}
+.sec-title{
+  font-family:'Tajawal',sans-serif;font-size:1.85rem;font-weight:800;
+  line-height:1.25;letter-spacing:-.025em
+}
+.sec-sub{font-size:.88rem;color:var(--muted);margin-top:8px}
+
+/* ─── COURSES ─── */
+.courses-sec{padding:40px 0}
+.sfbar{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.fb{
+  padding:7px 15px;border-radius:var(--r-pill);
+  border:1.5px solid var(--border);background:transparent;
+  color:var(--muted);font-family:'Cairo',sans-serif;
+  font-size:.79rem;font-weight:600;cursor:pointer;transition:all .25s
+}
+.fb:hover,.fb.act{
+  background:linear-gradient(135deg,var(--orange),var(--orange-l));
+  border-color:transparent;color:#fff;
+  box-shadow:0 4px 14px rgba(255,107,0,.35);transform:translateY(-1px)
+}
+
+/* ─── HORIZONTAL GRID ─── */
+.grid-wrapper{position:relative}
+.grid-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:10px
+}
+.res-info{font-size:.78rem;color:var(--dim)}
+.grid-arrows{display:flex;gap:7px}
+.gnav{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--card);border:1px solid var(--border);
+  color:var(--text);cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;flex-shrink:0
+}
+.gnav:hover{border-color:var(--orange);color:var(--orange);background:rgba(255,107,0,.08)}
+.grid{
+  display:flex;flex-direction:row;gap:12px;
+  overflow-x:auto;overflow-y:visible;
+  scroll-snap-type:x mandatory;
+  padding:6px 0 18px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,107,0,.35) transparent;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth
+}
+.grid::-webkit-scrollbar{height:3px}
+.grid::-webkit-scrollbar-thumb{background:rgba(255,107,0,.35);border-radius:4px}
+.grid::-webkit-scrollbar-track{background:transparent}
+.cc{
+  min-width:230px;max-width:230px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:0;cursor:pointer;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  scroll-snap-align:start;flex-shrink:0
+}
+.cc::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--orange),var(--orange-l));
+  opacity:0;transition:opacity .3s;pointer-events:none;z-index:1
+}
+.cc:hover{transform:translateY(-4px) scale(1.02);border-color:var(--bord-o);box-shadow:0 10px 30px rgba(255,107,0,.2)}
+.cc:hover::after{opacity:.07}
+.cc-img-wrap{width:100%;height:140px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.04);position:relative}
+.cc-img-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 50%,rgba(8,5,22,.65));pointer-events:none
+}
+.cc-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+.cc:hover .cc-img{transform:scale(1.08)}
+.cc-img-err{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:3rem;background:linear-gradient(135deg,rgba(255,107,0,.1),rgba(100,30,200,.15))
+}
+.cc-body{padding:12px 14px 14px;position:relative;flex:1}
+.cc-arr{position:absolute;left:10px;top:10px;font-size:.78rem;color:var(--dim);transition:all .3s;z-index:2}
+.cc:hover .cc-arr{color:var(--orange);transform:translateX(-3px)}
+.cc-num{
+  position:absolute;top:8px;right:8px;z-index:10;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(6px);
+  border:1px solid var(--bord-o);color:var(--orange-l);
+  width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Tajawal',sans-serif;font-size:.7rem;font-weight:900
+}
+.cc-ico{font-size:1.5rem;margin-bottom:6px;display:block}
+.cc-name{font-weight:700;font-size:.85rem;line-height:1.4;position:relative;z-index:1}
+.cc-cat{font-size:.68rem;color:var(--orange-l);margin-top:5px;font-weight:600}
+.no-res{text-align:center;padding:50px 20px;color:var(--dim);display:none}
+.no-res.show{display:block}
+
+/* ─── OPPORTUNITY ─── */
+.opp-sec{padding:48px 0}
+.opp{
+  background:linear-gradient(140deg,#15032A,#200935);
+  border:1.5px solid var(--bord-y);border-radius:26px;
+  padding:36px 28px;position:relative;overflow:hidden
+}
+.opp::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:240px;height:240px;border-radius:50%;
+  background:rgba(255,209,6,.07);filter:blur(50px);pointer-events:none
+}
+.opp::after{
+  content:'';position:absolute;bottom:-60px;left:-60px;
+  width:180px;height:180px;border-radius:50%;
+  background:rgba(255,107,0,.06);filter:blur(40px);pointer-events:none
+}
+.opp-badge{
+  display:inline-block;background:rgba(255,209,6,.12);
+  border:1px solid var(--bord-y);color:var(--yellow);
+  padding:4px 16px;border-radius:var(--r-pill);font-size:.77rem;font-weight:700;
+  margin-bottom:14px
+}
+.opp h2{
+  font-family:'Tajawal',sans-serif;font-size:clamp(1.7rem,4vw,2.2rem);
+  font-weight:900;line-height:1.2;letter-spacing:-.025em;margin-bottom:12px
+}
+.opp h2 .y{color:var(--yellow)}
+.opp-sub{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:26px}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.feat{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,209,6,.12);
+  border-radius:var(--r);padding:16px;display:flex;align-items:flex-start;gap:12px;
+  transition:all .3s
+}
+.feat:hover{border-color:var(--bord-y);background:rgba(255,209,6,.05)}
+.feat-ico{font-size:1.5rem;flex-shrink:0}
+.feat-t{font-weight:700;font-size:.87rem;color:var(--yellow)}
+.feat-d{font-size:.77rem;color:var(--muted);margin-top:3px;line-height:1.5}
+.steps-h{
+  font-family:'Tajawal',sans-serif;font-size:1.05rem;font-weight:800;
+  color:var(--gold);margin-bottom:14px
+}
+.steps{display:flex;flex-direction:column;gap:11px;margin-bottom:22px}
+.step{
+  display:flex;align-items:flex-start;gap:14px;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:var(--r);padding:14px;transition:all .3s
+}
+.step:hover{border-color:rgba(255,107,0,.2);background:rgba(255,107,0,.04)}
+.step-n{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--orange),var(--orange-l));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Tajawal',sans-serif;font-size:.9rem;font-weight:900;color:#fff
+}
+.step-t{font-weight:700;font-size:.89rem}
+.step-d{font-size:.77rem;color:var(--muted);margin-top:3px}
+.opp-note{
+  background:rgba(0,0,0,.2);border:1px solid var(--border);
+  border-radius:var(--r);padding:14px;
+  font-size:.82rem;color:var(--muted);line-height:1.65;
+  display:flex;align-items:flex-start;gap:10px;margin-bottom:22px
+}
+.opp-cta{text-align:center}
+
+/* ─── CONTACT ─── */
+.contact-sec{padding:38px 0 120px}
+.contact{
+  background:rgba(37,211,102,.06);border:1.5px solid rgba(37,211,102,.22);
+  border-radius:22px;padding:30px;text-align:center
+}
+.c-ico{font-size:3rem;margin-bottom:14px}
+.c-t{font-family:'Tajawal',sans-serif;font-size:1.45rem;font-weight:800;margin-bottom:8px}
+.c-d{font-size:.87rem;color:var(--muted);margin-bottom:22px}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--green),var(--green-d));
+  color:#fff;padding:14px 34px;border-radius:var(--r-pill);
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:.97rem;
+  transition:all .3s;box-shadow:var(--sh-g)
+}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(37,211,102,.55)}
+
+/* ─── FIXED ─── */
+.fwa{
+  position:fixed;bottom:24px;left:20px;z-index:800;
+  background:linear-gradient(135deg,var(--green),var(--green-d));
+  color:#fff;border:none;border-radius:var(--r-pill);
+  padding:12px 20px;font-family:'Cairo',sans-serif;font-size:.88rem;font-weight:700;
+  cursor:pointer;box-shadow:var(--sh-g);transition:all .3s;
+  display:flex;align-items:center;gap:8px;text-decoration:none
+}
+.fwa:hover{transform:translateY(-3px)}
+.wdot{width:8px;height:8px;background:#fff;border-radius:50%;animation:blink 1.5s infinite}
+.fshr{
+  position:fixed;bottom:24px;right:20px;z-index:800;
+  background:linear-gradient(135deg,var(--orange),var(--orange-l));
+  color:#fff;border:none;border-radius:var(--r-pill);
+  padding:11px 20px;font-family:'Cairo',sans-serif;font-size:.86rem;font-weight:700;
+  cursor:pointer;box-shadow:var(--sh-o);transition:all .3s
+}
+.fshr:hover{transform:translateY(-3px)}
+
+/* ─── LOGIN MODAL ─── */
+.overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,.78);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;visibility:hidden;transition:all .3s
+}
+.overlay.show{opacity:1;visibility:visible}
+.mbox{
+  background:#110828;border:1px solid rgba(255,107,0,.28);
+  border-radius:26px;padding:34px;width:100%;max-width:400px;
+  transform:scale(.9) translateY(20px);transition:all .35s;position:relative
+}
+.overlay.show .mbox{transform:scale(1) translateY(0)}
+.m-x{
+  position:absolute;top:14px;left:14px;
+  background:rgba(255,255,255,.09);border:none;border-radius:50%;
+  width:32px;height:32px;color:var(--text);cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;transition:all .2s
+}
+.m-x:hover{background:rgba(255,107,0,.18)}
+.m-logo{text-align:center;margin-bottom:16px}
+.m-logo-t{
+  font-family:'Tajawal',sans-serif;font-size:2rem;font-weight:900;
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.m-sub{text-align:center;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;color:var(--muted);margin-bottom:24px}
+.fg{margin-bottom:15px}
+.flbl{font-size:.78rem;color:var(--muted);margin-bottom:6px;display:block;font-weight:600}
+.finp{
+  width:100%;padding:12px 16px;
+  background:rgba(255,255,255,.06);border:1.5px solid var(--border);
+  border-radius:var(--r);color:var(--text);
+  font-family:'Cairo',sans-serif;font-size:.93rem;outline:none;transition:all .3s
+}
+.finp:focus{border-color:var(--orange);background:rgba(255,107,0,.07)}
+.finp::placeholder{color:var(--dim)}
+select.finp option{background:#110828}
+.m-btn{
+  width:100%;padding:13px;
+  background:linear-gradient(135deg,var(--orange),var(--orange-l));
+  color:#fff;border:none;border-radius:var(--r);cursor:pointer;
+  font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;
+  transition:all .3s;margin-top:4px
+}
+.m-btn:hover{transform:translateY(-2px);box-shadow:var(--sh-o)}
+.m-err{font-size:.78rem;color:#ff6b6b;text-align:center;margin-top:10px;display:none}
+.m-err.show{display:block}
+
+/* ─── COURSE DETAIL MODAL ─── */
+.cd-overlay{
+  position:fixed;inset:0;z-index:1200;
+  background:rgba(0,0,0,.75);backdrop-filter:blur(8px);
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s
+}
+.cd-overlay.show{opacity:1;pointer-events:all}
+.cd-box{
+  width:100%;max-width:540px;
+  background:linear-gradient(160deg,#110828,#0d051c);
+  border:1px solid var(--bord-o);
+  border-radius:28px 28px 0 0;
+  overflow:hidden;
+  transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);
+  max-height:92vh;overflow-y:auto
+}
+.cd-overlay.show .cd-box{transform:translateY(0)}
+.cd-img-wrap{position:relative;width:100%;height:220px;overflow:hidden;background:#1a0a2e}
+.cd-img{width:100%;height:100%;object-fit:cover;display:block}
+.cd-img-fallback{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:5rem;
+  background:linear-gradient(135deg,rgba(255,107,0,.15),rgba(100,30,200,.2))
+}
+.cd-cat-badge{
+  position:absolute;top:14px;right:14px;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(6px);
+  border:1px solid var(--bord-o);color:var(--orange-l);
+  padding:4px 12px;border-radius:var(--r-pill);font-size:.72rem;font-weight:700
+}
+.cd-close{
+  position:absolute;top:14px;left:14px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.15);color:#fff;
+  font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .2s
+}
+.cd-close:hover{background:rgba(255,107,0,.4);border-color:var(--orange)}
+.cd-body{padding:22px 20px 32px}
+.cd-icon{font-size:2rem;margin-bottom:8px;display:block}
+.cd-title{
+  font-family:'Tajawal',sans-serif;font-size:1.3rem;font-weight:800;
+  line-height:1.3;margin-bottom:6px
+}
+.cd-catl{font-size:.75rem;color:var(--orange-l);font-weight:700;margin-bottom:14px}
+.cd-divider{height:1px;background:var(--border);margin:14px 0}
+.cd-desc-h{font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.cd-desc{font-size:.9rem;color:var(--text);line-height:1.8}
+.cd-wa{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin-top:20px;padding:13px;border-radius:var(--r-pill);
+  background:linear-gradient(135deg,var(--green),var(--green-d));
+  color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.93rem;
+  cursor:pointer;border:none;width:100%;box-shadow:var(--sh-g);transition:all .3s
+}
+.cd-wa:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,.5)}
+
+/* ─── ADMIN PANEL ─── */
+.admin-p{
+  position:fixed;inset:0;z-index:1500;
+  background:var(--bg2);overflow-y:auto;
+  transform:translateX(110%);transition:transform .4s cubic-bezier(.4,0,.2,1)
+}
+.admin-p.open{transform:translateX(0)}
+.ah{
+  background:rgba(17,8,40,.9);backdrop-filter:blur(20px);
+  position:sticky;top:0;z-index:10;
+  padding:0 20px;border-bottom:1px solid var(--border)
+}
+.ah-i{
+  max-width:800px;margin:0 auto;height:60px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px
+}
+.ah-t{font-family:'Tajawal',sans-serif;font-size:1.08rem;font-weight:800}
+.ah-close{
+  display:flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:var(--r-pill);
+  background:rgba(255,255,255,.07);border:1px solid var(--border);
+  color:var(--text);font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:600;
+  cursor:pointer;transition:all .2s
+}
+.ah-close:hover{background:rgba(255,107,0,.13);border-color:var(--bord-o);color:var(--orange)}
+.ac{max-width:800px;margin:0 auto;padding:24px 20px 100px}
+.as{margin-bottom:30px}
+.as-t{
+  font-family:'Tajawal',sans-serif;font-size:.98rem;font-weight:800;
+  color:var(--orange);margin-bottom:14px;
+  display:flex;align-items:center;gap:8px
+}
+.a-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.a-stat{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:16px;text-align:center
+}
+.a-stat-n{
+  font-family:'Tajawal',sans-serif;font-size:1.75rem;font-weight:900;
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.a-stat-l{font-size:.7rem;color:var(--dim);margin-top:3px}
+.a-row{display:flex;gap:10px;align-items:stretch}
+.a-row .finp{flex:1}
+.a-btn{
+  padding:11px 20px;border-radius:var(--r);
+  background:linear-gradient(135deg,var(--orange),var(--orange-l));
+  color:#fff;border:none;cursor:pointer;
+  font-family:'Cairo',sans-serif;font-size:.87rem;font-weight:700;
+  white-space:nowrap;transition:all .3s;flex-shrink:0
+}
+.a-btn:hover{transform:translateY(-1px);box-shadow:var(--sh-o)}
+.add-form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.add-form .fg{flex:1;min-width:130px;margin-bottom:0}
+.clist{display:flex;flex-direction:column;gap:8px;max-height:360px;overflow-y:auto;padding-left:4px}
+.clist::-webkit-scrollbar{width:4px}
+.clist::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.ci{
+  display:flex;align-items:center;gap:10px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:10px 14px;transition:all .2s
+}
+.ci:hover{border-color:var(--bord-o)}
+.ci-ico{font-size:1.3rem;flex-shrink:0}
+.ci-name{flex:1;font-size:.85rem;font-weight:600}
+.ci-cat{font-size:.7rem;color:var(--muted)}
+.ci-del{
+  padding:5px 10px;border-radius:var(--r-sm);
+  background:rgba(255,107,107,.1);border:1px solid rgba(255,107,107,.18);
+  color:#ff6b6b;cursor:pointer;font-size:.78rem;transition:all .2s;flex-shrink:0
+}
+.ci-del:hover{background:rgba(255,107,107,.2)}
+.divider{border:none;border-top:1px solid var(--border);margin:6px 0}
+
+/* ─── TOAST ─── */
+.toast{
+  position:fixed;top:76px;left:50%;transform:translateX(-50%) translateY(-16px);
+  background:linear-gradient(135deg,var(--green),var(--green-d));
+  color:#fff;padding:12px 26px;border-radius:var(--r-pill);
+  font-family:'Cairo',sans-serif;font-size:.88rem;font-weight:700;
+  z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ─── WELCOME MODAL ─── */
+.wc-overlay{
+  position:fixed;inset:0;z-index:3000;
+  background:rgba(8,5,22,.96);backdrop-filter:blur(18px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  transition:opacity .4s,visibility .4s
+}
+.wc-overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.wc-box{
+  background:linear-gradient(160deg,#110828,#0d051c);
+  border:1px solid rgba(255,107,0,.3);
+  border-radius:28px;padding:36px 28px;width:100%;max-width:420px;
+  transform:translateY(0);transition:transform .4s;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.7)
+}
+.wc-logo{text-align:center;margin-bottom:22px}
+.wc-logo-t{
+  font-family:'Tajawal',sans-serif;font-size:1.7rem;font-weight:900;
+  background:linear-gradient(135deg,var(--orange),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.wc-logo-sub{font-size:.78rem;color:var(--muted);margin-top:4px}
+.wc-title{
+  font-family:'Tajawal',sans-serif;font-size:1.4rem;font-weight:800;
+  text-align:center;margin-bottom:8px
+}
+.wc-desc{font-size:.84rem;color:var(--muted);text-align:center;margin-bottom:24px;line-height:1.65}
+.wc-err{
+  font-size:.78rem;color:#ff6b6b;text-align:center;
+  margin-bottom:10px;display:none
+}
+.wc-err.show{display:block}
+.wc-btn{
+  width:100%;padding:15px;
+  background:linear-gradient(135deg,#b8860b,var(--gold),#b8860b);
+  background-size:200% 100%;
+  color:#1a0a00;border:none;border-radius:var(--r-pill);cursor:pointer;
+  font-family:'Cairo',sans-serif;font-size:1.05rem;font-weight:800;
+  transition:all .3s;margin-top:4px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 6px 24px rgba(255,209,6,.35)
+}
+.wc-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,209,6,.5)}
+.wc-note{font-size:.7rem;color:var(--dim);text-align:center;margin-top:16px}
+
+/* ─── ANIMS ─── */
+@keyframes fd{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:620px){
+  .nav-links{display:none}
+  .hero h1{font-size:1.95rem}
+  .cc{min-width:195px;max-width:195px}
+  .cc-img-wrap{height:115px}
+  .feats{grid-template-columns:1fr}
+  .a-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:380px){
+  .stats-row{grid-template-columns:1fr}
+  .cc{min-width:175px;max-width:175px}
+}
+</style>
+</head>
+<body>
+<div class="orbs"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-i">
+    <div class="logo">Boutique Digitale</div>
+    <div class="nav-links">
+      <button class="nl act" onclick="scrollTo('hero')">🏠 الرئيسية</button>
+      <button class="nl" onclick="scrollTo('courses')">🎓 التكوينات</button>
+      <button class="nl" onclick="scrollTo('opp')">💼 فرصة عمل</button>
+      <button class="nl" onclick="scrollTo('contact')">📞 تواصل</button>
+    </div>
+    <button class="admin-btn" onclick="openLogin()">🔐 الإدارة</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero" class="wrap">
+  <section class="hero">
+    <div class="hero-badge"><span class="bdot"></span>المنصة التعليمية الجزائرية الأولى</div>
+    <h1>غيّر حياتك<br>مع <span class="gr">Boutique Digitale</span></h1>
+    <p>أكثر من 49 تكوين متنوع — تعلم مهارة جديدة وابدأ مشروعك أو وظيفتك من المنزل</p>
+    <div class="cta">
+      <button class="btn-p" onclick="scrollTo('courses')">🎓 استكشف التكوينات</button>
+      <button class="btn-o" onclick="scrollTo('opp')">💼 فرصة عمل معنا</button>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-n" id="heroN">49</div><div class="stat-l">تكوين متاح</div></div>
+      <div class="stat"><div class="stat-n">175K+</div><div class="stat-l">مستفيد</div></div>
+      <div class="stat"><div class="stat-n">4.9⭐</div><div class="stat-l">تقييم المنصة</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- PROMO -->
+<div class="wrap promo-wrap">
+  <div class="promo">
+    <div class="promo-tag-row">
+      <div class="promo-tag">🎁 عرض البرومو الحصري <span class="tag-pill">محدود</span></div>
+    </div>
+    <div class="promo-price" id="promoPrice">15,000 دج <span>فقط / دورتين</span></div>
+    <div class="promo-desc" id="promoDesc">🔥 احصل على <strong style="color:#fff">دورتين كاملتين</strong> بسعر خاص — اختر اللي يناسبك من أكثر من 49 تكوين!</div>
+    <div class="promo-tags">
+      <div class="ptag">🏆 فرصة عمل مجانية عند الاشتراك</div>
+      <div class="ptag">📜 شهادة معتمدة</div>
+    </div>
+    <div class="promo-phone">
+      <div class="ph-icon">💬</div>
+      <div>
+        <div class="ph-lbl">تواصل معنا مباشرة على الواتساب</div>
+        <span class="ph-num" id="promoPhone">0662 36 93 34</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<div id="courses" class="wrap">
+  <section class="courses-sec">
+    <div class="sec-h">
+      <div class="sec-badge">🎓 كتالوج التكوينات</div>
+      <div class="sec-title">اختر تكوينك الآن</div>
+      <div class="sec-sub">أكثر من 49 تكوين في مجالات متنوعة — شيء يناسب كل شخص</div>
+    </div>
+
+    <div class="grid-wrapper">
+      <div class="grid-nav">
+        <div class="res-info" id="resInfo"></div>
+        <div class="grid-arrows">
+          <button class="gnav" onclick="scrollGrid(1)" title="التالي">&#8592;</button>
+          <button class="gnav" onclick="scrollGrid(-1)" title="السابق">&#8594;</button>
+        </div>
+      </div>
+      <div class="grid" id="cgrid"></div>
+      <div class="no-res" id="noRes">😕 لا توجد نتائج مطابقة</div>
+    </div>
+  </section>
+</div>
+
+<!-- OPPORTUNITY -->
+<div id="opp" class="wrap">
+  <section class="opp-sec">
+    <div class="opp">
+      <div class="opp-badge">💼 فرصة عمل حقيقية</div>
+      <h2>اعمل من <span class="y">المنزل</span><br>بدون شهادة أو خبرة</h2>
+      <div class="opp-sub">نقدم لك فرصة عمل في مجال التسويق الرقمي لبيع الدورات التعليمية — ابدأ بدخل إضافي عبر الإنترنت باستخدام هاتفك فقط</div>
+      <div class="feats">
+        <div class="feat"><div class="feat-ico">📱</div><div><div class="feat-t">هاتفك يكفي</div><div class="feat-d">لا تحتاج حاسوب أو معدات خاصة</div></div></div>
+        <div class="feat"><div class="feat-ico">🏠</div><div><div class="feat-t">من المنزل</div><div class="feat-d">ساعات مرنة — اشتغل وقتما تريد</div></div></div>
+        <div class="feat"><div class="feat-ico">🎓</div><div><div class="feat-t">تدريب كامل</div><div class="feat-d">نشرح لك خطوة بخطوة من الصفر</div></div></div>
+        <div class="feat"><div class="feat-ico">💰</div><div><div class="feat-t">دخل إضافي</div><div class="feat-d">عمولة على كل اشتراك تجلبه</div></div></div>
+      </div>
+      <div class="steps-h">⚡ كيف تبدأ؟</div>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div><div class="step-t">تواصل معنا</div><div class="step-d">أرسل لنا رسالة على الواتساب وأخبرنا أنك مهتم بفرصة العمل</div></div></div>
+        <div class="step"><div class="step-n">2</div><div><div class="step-t">احصل على التدريب</div><div class="step-d">سنشرح لك كل التفاصيل ونعطيك المواد اللازمة مجاناً</div></div></div>
+        <div class="step"><div class="step-n">3</div><div><div class="step-t">ابدأ التسويق</div><div class="step-d">روّج للدورات في محيطك وعبر وسائل التواصل الاجتماعي</div></div></div>
+        <div class="step"><div class="step-n">4</div><div><div class="step-t">احصل على أرباحك</div><div class="step-d">كل اشتراك تجلبه = عمولة مباشرة لك</div></div></div>
+      </div>
+      <div class="opp-note">
+        <span style="font-size:1.2rem;flex-shrink:0;margin-top:2px">ℹ️</span>
+        <span>لا نعدك بأرباح خيالية — النجاح يعتمد على التزامك وعملك. كل التفاصيل ستُشرح لك بوضوح قبل البدء.</span>
+      </div>
+      <div class="opp-cta">
+        <a class="btn-p" href="https://wa.me/213662369334?text=السلام عليكم، أريد الاستفسار عن فرصة العمل في Boutique Digitale" target="_blank" style="display:inline-flex;align-items:center;gap:8px">
+          💬 اشترك في فرصة العمل الآن
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="wrap">
+  <section class="contact-sec">
+    <div class="contact">
+      <div class="c-ico">📲</div>
+      <div class="c-t">تحدث معنا مباشرة</div>
+      <div class="c-d">لديك سؤال أو تريد الاشتراك في تكوين؟ نحن هنا للمساعدة</div>
+      <a class="wa-btn" href="https://wa.me/213662369334?text=السلام عليكم، أريد الاستفسار عن عرض البرومو - دورتين بـ 15000 دج" target="_blank">
+        <span style="font-size:1.2rem">📱</span> تواصل على الواتساب الآن
+      </a>
+    </div>
+  </section>
+</div>
+
+<!-- FIXED BTNS -->
+<a class="fwa" href="https://wa.me/213662369334?text=السلام عليكم، أريد الاستفسار عن عرض البرومو" target="_blank">
+  <div class="wdot"></div>📲 واتساب
+</a>
+<button class="fshr" onclick="copyList()">📋 نسخ القائمة</button>
+
+<!-- LOGIN MODAL -->
+<div class="overlay" id="loginModal" onclick="closeOut(event)">
+  <div class="mbox">
+    <button class="m-x" onclick="closeLogin()">✕</button>
+    <div class="m-logo"><div class="m-logo-t">Boutique Digitale</div></div>
+    <div class="m-sub">🔐 دخول لوحة الإدارة</div>
+    <div class="fg">
+      <label class="flbl">اسم المستخدم</label>
+      <input class="finp" id="lu" type="text" placeholder="اسم المستخدم" autocomplete="username">
+    </div>
+    <div class="fg">
+      <label class="flbl">كلمة السر</label>
+      <input class="finp" id="lp" type="password" placeholder="كلمة السر" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="m-btn" onclick="doLogin()">دخول ←</button>
+    <div class="m-err" id="lerr">❌ بيانات الدخول غير صحيحة</div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-p" id="adminP">
+  <div class="ah">
+    <div class="ah-i">
+      <div class="ah-t">🛠️ لوحة إدارة Boutique Digitale</div>
+      <button class="ah-close" onclick="closeAdmin()">✕ خروج</button>
+    </div>
+  </div>
+  <div class="ac">
+
+    <div class="as">
+      <div class="as-t">📊 إحصائيات المنصة</div>
+      <div class="a-stats">
+        <div class="a-stat"><div class="a-stat-n" id="aN">49</div><div class="a-stat-l">تكوين</div></div>
+        <div class="a-stat"><div class="a-stat-n">175K+</div><div class="a-stat-l">مستفيد</div></div>
+        <div class="a-stat"><div class="a-stat-n">4.9⭐</div><div class="a-stat-l">تقييم</div></div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="as">
+      <div class="as-t">🎁 إعدادات العرض الترويجي</div>
+      <div class="fg">
+        <label class="flbl">سعر العرض</label>
+        <div class="a-row">
+          <input class="finp" id="aPrice" type="text" value="15,000 دج">
+          <button class="a-btn" onclick="savePromo()">💾 حفظ</button>
+        </div>
+      </div>
+      <div class="fg" style="margin-top:10px">
+        <label class="flbl">وصف العرض</label>
+        <input class="finp" id="aDesc" type="text" value="احصل على دورتين كاملتين بسعر خاص — اختر اللي يناسبك من أكثر من 49 تكوين!">
+      </div>
+      <div class="fg" style="margin-top:10px">
+        <label class="flbl">رقم الواتساب</label>
+        <div class="a-row">
+          <input class="finp" id="aPhone" type="text" value="0662 36 93 34" dir="ltr">
+          <button class="a-btn" onclick="savePhone()">💾 حفظ</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="as">
+      <div class="as-t">➕ إضافة تكوين جديد</div>
+      <div class="add-form">
+        <div class="fg"><label class="flbl">اسم التكوين</label><input class="finp" id="ncName" type="text" placeholder="اسم التكوين الجديد"></div>
+        <div class="fg"><label class="flbl">الفئة</label>
+          <select class="finp" id="ncCat">
+            <option value="تجميل">💄 التجميل</option>
+            <option value="طبخ">🍳 الطبخ والصنع</option>
+            <option value="خياطة">🧵 الخياطة</option>
+            <option value="موضى">👗 الموضى</option>
+            <option value="حرف">🎨 الحرف اليدوية</option>
+            <option value="صحة">🌿 الصحة</option>
+            <option value="تقني">💻 التقني</option>
+            <option value="ذكاء">🧠 الذكاء والتركيز</option>
+            <option value="أخرى">✨ أخرى</option>
+          </select>
+        </div>
+        <div class="fg" style="max-width:90px"><label class="flbl">إيموجي</label><input class="finp" id="ncIcon" type="text" placeholder="🎯"></div>
+        <button class="a-btn" onclick="addCourse()" style="margin-top:4px">➕ إضافة</button>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="as">
+      <div class="as-t">📚 قائمة التكوينات (<span id="aCount">49</span>)</div>
+      <div class="clist" id="clist"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- COURSE DETAIL MODAL -->
+<div class="cd-overlay" id="cdOverlay" onclick="closeCourse(event)">
+  <div class="cd-box" id="cdBox">
+    <div class="cd-img-wrap">
+      <img class="cd-img" id="cdImg" src="" alt="" onerror="this.style.display='none';document.getElementById('cdFallback').style.display='flex'">
+      <div class="cd-img-fallback" id="cdFallback" style="display:none"><span id="cdFallIco"></span></div>
+      <div class="cd-cat-badge" id="cdCat"></div>
+      <button class="cd-close" onclick="closeCourseModal()">✕</button>
+    </div>
+    <div class="cd-body">
+      <span class="cd-icon" id="cdIco"></span>
+      <div class="cd-title" id="cdTitle"></div>
+      <div class="cd-catl" id="cdCatL"></div>
+      <div class="cd-divider"></div>
+      <div class="cd-desc-h">📋 نبذة عن الدورة</div>
+      <div class="cd-desc" id="cdDesc"></div>
+      <button class="cd-wa" onclick="waEnroll()">
+        <span>📲</span> التسجيل عبر واتساب
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- WELCOME MODAL -->
+<div class="wc-overlay" id="wcOverlay">
+  <div class="wc-box">
+    <div class="wc-logo">
+      <div class="wc-logo-t">Boutique Digitale</div>
+      <div class="wc-logo-sub">🎓 المنصة التعليمية الجزائرية</div>
+    </div>
+    <div class="wc-title">مرحباً بك! 👋</div>
+    <div class="wc-desc">أدخل معلوماتك للوصول إلى كتالوج التكوينات والتواصل معنا مباشرة</div>
+    <div class="fg">
+      <label class="flbl">الاسم واللقب</label>
+      <input class="finp" id="wcName" type="text" placeholder="" autocomplete="off">
+    </div>
+    <div class="fg">
+      <label class="flbl">رقم الواتساب</label>
+      <input class="finp" id="wcPhone" type="tel" placeholder="" autocomplete="off" inputmode="numeric">
+    </div>
+    <div class="wc-err" id="wcErr">الرجاء إدخال الاسم ورقم الهاتف</div>
+    <button class="wc-btn" onclick="submitWelcome()">
+      <span>✅</span> الوصول إلى المحتوى
+    </button>
+    <div class="wc-note">🔒 معلوماتك محفوظة وآمنة — نستخدمها فقط للتواصل معك</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const CATS = {
+  'تجميل':'💄 التجميل','طبخ':'🍳 الطبخ والصنع','خياطة':'🧵 الخياطة',
+  'موضى':'👗 الموضى','حرف':'🎨 الحرف اليدوية',
+  'صحة':'🌿 الصحة','تقني':'💻 التقني',
+  'ذكاء':'🧠 الذكاء والتركيز','أخرى':'✨ أخرى'
+};
+
+let courses = [
+  // ── تجميل ──
+  {name:"الحلاقة و الماكياج",cat:"تجميل",icon:"💄",img:"makeup+beauty+salon",desc:"تعلّمي فنون الحلاقة والميكاب الاحترافي من الصفر — من تصفيف الشعر إلى تقنيات المكياج العصرية والتقليدية، مع أسرار الاحترافيات في ضبط الألوان والتناسق."},
+  {name:"تركيب الأظافر",cat:"تجميل",icon:"💅",img:"nail+art+manicure",desc:"دورة متكاملة في تركيب الأظافر الصناعية بالجل والأكريليك مع أحدث تقنيات الديكور والرسم على الأظافر وأسرار الثبات الطويل."},
+  {name:"تركيب الرموش",cat:"تجميل",icon:"👁️",img:"eyelash+extension+beauty",desc:"تعلّمي تقنيات تركيب الرموش الصناعية الفردية والكاملة بأنواعها المختلفة للحصول على نظرة ساحرة تدوم طويلاً."},
+  {name:"العناية باليدين و القدمين",cat:"تجميل",icon:"🤲",img:"spa+pedicure+manicure",desc:"تعلّمي تقنيات العناية الكاملة باليدين والقدمين من تلطيف وتقشير ومعالجة البشرة وتشكيل الأظافر باحترافية عالية."},
+  {name:"صناعة مواد التجميل الطبيعية",cat:"تجميل",icon:"🌸",img:"natural+cosmetics+organic+beauty",desc:"تعلّمي صناعة مستحضرات التجميل الطبيعية من كريمات وأقنعة وزيوت وسيروم باستخدام مكونات طبيعية آمنة وفعّالة."},
+  {name:"الحلاقة للرجال",cat:"تجميل",icon:"✂️",img:"barber+haircut+men",desc:"دورة احترافية في حلاقة الرجال وتشكيل اللحى، من التقنيات الكلاسيكية إلى أحدث صيحات الباربر الشوب العصري."},
+  {name:"استخلاص الزيوت",cat:"تجميل",icon:"🫙",img:"essential+oil+beauty+natural+organic",desc:"دورة في استخلاص الزيوت الطبيعية من الزيتون والحبة السوداء والأعشاب المختلفة لأغراض العناية بالبشرة والجمال."},
+  {name:"صناعة الصابون الطبيعي",cat:"تجميل",icon:"🧼",img:"natural+soap+handmade+organic+beauty",desc:"تعلّمي صناعة الصابون الطبيعي البارد والساخن باستخدام الزيوت والأعشاب الطبيعية، ضمن منتجات التجميل الطبيعي لبشرة صحية ومشرقة."},
+  {name:"دورة التلوين خاصة بالشعر",cat:"تجميل",icon:"🎨",img:"hair+coloring+salon+highlights",desc:"دورة متخصصة في تقنيات تلوين الشعر بأحدث الأساليب العصرية — من البالياج والأومبري إلى الصبغات الكاملة والتقليدية مع أسرار حماية الشعر."},
+  {name:"تجميل كلاسيكي وبدون جراحة",cat:"تجميل",icon:"💆",img:"facial+beauty+treatment+skin",desc:"دورة في تقنيات التجميل غير الجراحي — العناية بالبشرة والوجه، تقنيات الرفع والشد الطبيعي، البوتوكس الطبيعي، والمعالجات التجميلية الكلاسيكية الاحترافية."},
+  {name:"حلاقة للنساء المبتدئين",cat:"تجميل",icon:"💇",img:"women+haircut+salon+hairstyle",desc:"دورة مخصصة للمبتدئات في حلاقة الشعر النسائي — من أدوات العمل إلى تقنيات القص الأساسية، التشكيل، البروكسيد، ونصائح التعامل مع أنواع الشعر المختلفة."},
+  // ── طبخ ──
+  {name:"الحلويات العصرية و التقليدية",cat:"طبخ",icon:"🍰",img:"pastry+sweets+cake+dessert",desc:"دورة شاملة في صناعة الحلويات الجزائرية التقليدية كالمقروط والبقلاوة، والعصرية كالكيك والمعجنات الفرنسية."},
+  {name:"صناعة الأجبان",cat:"طبخ",icon:"🧀",img:"cheese+making+dairy",desc:"تعلّمي صناعة أنواع مختلفة من الأجبان المنزلية الطازجة والمعتقة بطرق صحية ومضمونة تُغنيك عن الأجبان التجارية."},
+  {name:"الخمائر",cat:"طبخ",icon:"🥐",img:"sourdough+bread+baking",desc:"دورة في علم الخمائر وصناعة الخبز الطبيعي والعجائن المخمرة بمختلف أنواعها وأشكالها بالطريقة الصحية الأصيلة."},
+  {name:"الكيك ديزاين",cat:"طبخ",icon:"🎂",img:"cake+decoration+design+wedding",desc:"تعلّمي فن تصميم وتزيين الكيك باحترافية من الفوندون إلى الكريمات والزخارف الفنية المبدعة لكل مناسبة."},
+  {name:"تشكيل الحلويات على شكل فواكه",cat:"طبخ",icon:"🍬",img:"marzipan+fruit+shaped+sweets+candy",desc:"دورة احترافية في صناعة الحلويات المشكّلة على هيئة فواكه طبيعية. تشمل: عجينة اللوز (ماربان) ووصفة الحشوات المتنوعة، طريقة التشكيل الجزء 1 و2، التقنيات الصحيحة للتلوين وأسرار مزج الألوان، وطريقة التزيين واللمسات الأخيرة للحصول على نتيجة احترافية مبهرة."},
+  {name:"استخلاص التمور",cat:"طبخ",icon:"🌴",img:"dates+palm+fruit+natural",desc:"تعلّمي طرق استخلاص منتجات التمور كدبس التمر وسكر التمر والخل من التمر بطرق طبيعية صحية ومربحة."},
+  {name:"الكحوليات الطبيعية و الخلول",cat:"طبخ",icon:"🌿",img:"herbal+vinegar+fermented+natural",desc:"تعلّمي صناعة الخلول والمشروبات الطبيعية المخمرة ذات الفوائد الصحية العديدة كخل التفاح والكومبوشا."},
+  {name:"تقطير ماء الزهر و الورد",cat:"طبخ",icon:"🌹",img:"rose+water+flowers+distillation",desc:"دورة في فن تقطير مياه الزهور العطرية كماء الزهر وماء الورد واستخداماتها الرائعة في الطبخ والعناية بالبشرة."},
+  {name:"تجفيف الخضر و الفواكه",cat:"طبخ",icon:"🥦",img:"dried+fruits+vegetables+food",desc:"تعلّمي تقنيات تجفيف وحفظ الخضروات والفواكه للاستخدام على مدار السنة مع الحفاظ على قيمتها الغذائية الكاملة."},
+  {name:"المخللات",cat:"طبخ",icon:"🥒",img:"pickles+fermented+jar+vegetables",desc:"دورة شاملة في صناعة المخللات بأنواعها من الخضروات والزيتون والليمون مع أسرار الحفظ والنكهة المميزة."},
+  {name:"دورة المملحات",cat:"طبخ",icon:"🧂",img:"snacks+salty+food+appetizer",desc:"دورة في صناعة المملحات والمقبلات المالحة المتنوعة — من الكاكاوية والفستق والبذور المحمصة إلى المقبلات العصرية والتقليدية بطرق سهلة ومربحة."},
+  {name:"دورة البيتزا",cat:"طبخ",icon:"🍕",img:"pizza+homemade+dough+italian",desc:"تعلّمي صنع البيتزا الاحترافية من العجين — وصفة العجين الأصلية، صلصات متنوعة، وتشكيلة من البيتزا العصرية والكلاسيكية جاهزة للبيع أو للمنزل."},
+  {name:"دورة الجوزية القسنطينية",cat:"طبخ",icon:"🍮",img:"algerian+sweet+pastry+traditional",desc:"دورة متخصصة في صناعة الجوزية القسنطينية الأصيلة — الوصفة الأصلية السرية، طريقة العجن والتشكيل، الحشو والتزيين التقليدي للحصول على نكهة قسنطينة الأصيلة."},
+  {name:"الزلابية",cat:"طبخ",icon:"🍩",img:"zlabia+algerian+sweets+fried+syrup",desc:"دورة في صناعة الزلابية الجزائرية التقليدية — وصفة العجينة، طريقة القلي المثالية، سيروب العسل والتغطية لنتيجة مقرمشة ولذيذة مناسبة للبيع في رمضان وغيره."},
+  {name:"تشكيل ورود الحلويات",cat:"طبخ",icon:"🌺",img:"sugar+flower+cake+decoration+rose",desc:"دورة في فن تشكيل الورود من الحلويات — ورود السكر والمارسيبان والكريمة، خطوة بخطوة من ورود بسيطة إلى باقات كاملة جاهزة لتزيين التورتات والمناسبات."},
+  // ── خياطة ──
+  {name:"التشكيل على المانيكان - التفصيل بطريقة حديثة",cat:"خياطة",icon:"👗",img:"mannequin+fashion+draping+sewing",desc:"دورة في التفصيل والخياطة العصرية على المانيكان، من رسم الباترون إلى تنفيذ القطعة النهائية بأسلوب الموضة الحديث."},
+  {name:"تعلم الخياطة من الصفر للاحتراف",cat:"خياطة",icon:"🪡",img:"sewing+tailor+fashion+fabric",desc:"دورة متكاملة من الصفر تشمل تعلم ماكينة الخياطة ورسم الباترون وخياطة الملابس المختلفة حتى الاحتراف."},
+  {name:"خياطة ثوب الصلاة و طقم المطبخ",cat:"خياطة",icon:"🧵",img:"sewing+fabric+handmade+textile",desc:"تعلّمي خياطة ثوب الصلاة والمريلة وطقم المطبخ بخطوات بسيطة وسهلة الفهم مناسبة للمبتدئين."},
+  {name:"التصميم الرقمي للازياء",cat:"خياطة",icon:"🖥️",img:"fashion+digital+design+sketch+clothing",desc:"تعلّمي تصميم الأزياء رقمياً باستخدام برامج التصميم الحديثة لإنشاء قوالب وتصاميم احترافية جاهزة للتنفيذ."},
+  // ── موضى ──
+  {name:"صناعة الاكسيسوارات العصرية و التقليدية",cat:"موضى",icon:"💍",img:"fashion+accessories+jewelry+handmade+style",desc:"دورة في صناعة الإكسسوارات اليدوية العصرية والتقليدية من مجوهرات وأساور وإكليلات لكل مناسبة، ضمن عالم الموضى والأناقة."},
+  // ── حرف ──
+  {name:"الريزين جميع المستويات",cat:"حرف",icon:"📐",img:"resin+art+craft+epoxy+handmade",desc:"دورة شاملة في فن الريزين من المستوى المبتدئ للمحترف، صناعة مجوهرات وديكورات وتحف فنية رائعة ومربحة."},
+  {name:"دورة مواد التنظيف",cat:"حرف",icon:"🧹",img:"cleaning+products+homemade+natural",desc:"دورة في صناعة مواد التنظيف المنزلية — المنظفات الطبيعية ومواد تنظيف الأرضيات والزجاج والمطبخ بمكونات آمنة وبتكلفة منخفضة جداً للاستخدام المنزلي أو التجاري."},
+  {name:"الرسم على الزجاج و صناعة التحف",cat:"حرف",icon:"🪟",img:"glass+painting+art+craft+decoration",desc:"دورة في فن الرسم على الزجاج وصناعة التحف الفنية — تقنيات الألوان الزجاجية، الرسم الحر والقوالب، صنع مزهريات وإطارات وتحف منزلية جميلة ومربحة."},
+  {name:"التطريز اليدوي",cat:"حرف",icon:"🧶",img:"embroidery+handmade+thread+craft",desc:"دورة متكاملة في فن التطريز اليدوي — من الغرز الأساسية إلى التطريز الجزائري التقليدي والعصري على الملابس والمفارش، مناسبة لكل المستويات."},
+  // ── صحة ──
+  {name:"التغذية الصحية",cat:"صحة",icon:"🥗",img:"healthy+food+nutrition+salad",desc:"دورة في أساسيات التغذية السليمة وبناء نظام غذائي متوازن يناسب الحياة اليومية ويحمي الصحة على المدى البعيد."},
+  {name:"التغذية و السكري",cat:"صحة",icon:"💊",img:"diabetes+health+nutrition+diet",desc:"دورة متخصصة في التغذية لمرضى السكري، كيفية ضبط الوجبات وتنظيم مستوى السكر في الدم بطريقة علمية."},
+  {name:"التغذية الصحية لكبار السن",cat:"صحة",icon:"👴",img:"elderly+health+food+nutrition",desc:"دورة تُعنى بالاحتياجات الغذائية الخاصة بكبار السن وكيفية الوقاية من أمراض الشيخوخة بالتغذية السليمة."},
+  {name:"الارطوفونيا",cat:"صحة",icon:"🗣️",img:"speech+therapy+communication+child",desc:"دورة تعريفية بعلم النطق واللغة وكيفية التعامل مع اضطرابات الكلام والنطق عند الأطفال والكبار بأساليب حديثة."},
+  {name:"رعاية الأمومة و الطفولة",cat:"صحة",icon:"👶",img:"mother+baby+care+newborn+maternity",desc:"دورة شاملة في رعاية الأم والطفل — العناية بالمولود الجديد، التغذية الأمومية، حماية صحة الأم خلال الحمل والنفاس، وأساسيات تنشئة الطفل الصحية."},
+  // ── تقني ──
+  {name:"الرياضيات السريعة",cat:"ذكاء",icon:"🔢",img:"mental+math+brain+intelligence+education",desc:"تعلّمي تقنيات الحساب الذهني السريع لإجراء العمليات الحسابية بسرعة ودقة مذهلة، مما يقوي التركيز ويرفع نسبة الذاكرة والذكاء."},
+  {name:"السوروبان - الحساب الذهني الياباني",cat:"ذكاء",icon:"🧮",img:"abacus+soroban+brain+focus+intelligence",desc:"تعلّمي فن الحساب الذهني الياباني باستخدام المعداد الياباني لتقوية التركيز وتطوير الذاكرة ورفع معدل الذكاء عند الأطفال والكبار."},
+  {name:"الحوسبة الذكية",cat:"تقني",icon:"💻",img:"computer+technology+digital+smart",desc:"دورة في أساسيات الحوسبة والتقنيات الرقمية الحديثة للتعامل مع الحاسوب والإنترنت والتطبيقات باحترافية."},
+  {name:"التصوير الفتوغرافي",cat:"تقني",icon:"📸",img:"photography+camera+portrait+photo",desc:"دورة احترافية في التصوير الفوتوغرافي من أساسيات الكاميرا والإضاءة إلى تعديل الصور وتطوير الأسلوب الشخصي."},
+  {name:"الطباعة الحرارية",cat:"تقني",icon:"🖨️",img:"heat+printing+transfer+textile",desc:"تعلّمي تقنية الطباعة الحرارية على الملابس والأكواب والمواد المختلفة لإنشاء منتجات مخصصة ومشروع رابح."},
+  {name:"المنتسوري",cat:"تقني",icon:"📚",img:"montessori+children+education+play",desc:"دورة في منهج مونتيسوري التعليمي لتطوير مهارات الأطفال وتعزيز الاستقلالية والإبداع والثقة بالنفس لديهم."},
+  {name:"كيفية العمل على تطبيق Canva",cat:"تقني",icon:"🖌️",img:"canva+graphic+design+digital+creative",desc:"دورة عملية في استخدام تطبيق Canva لتصميم البوستات والإعلانات وبطاقات الأعمال والمحتوى الرقمي باحترافية — مثالية لأصحاب المشاريع والمسوقين."},
+  // ── أخرى ──
+  {name:"تعلم احكام التجويد (3 مستويات)",cat:"أخرى",icon:"📖",img:"quran+islamic+reading+arabic",desc:"دورة في أحكام تجويد القرآن الكريم لثلاثة مستويات، من المخارج والصفات إلى الأحكام التطبيقية الكاملة بإتقان."},
+  {name:"محو الأمية",cat:"أخرى",icon:"✏️",img:"education+literacy+writing+learning",desc:"برنامج متخصص لتعليم القراءة والكتابة للبالغين بأسلوب بسيط ومتدرج يراعي احتياجات المتعلم الكبير بصبر واحترام."},
+];
+
+let curCat = 'all';
+
+function render(list) {
+  const g = document.getElementById('cgrid');
+  const info = document.getElementById('resInfo');
+  const nr = document.getElementById('noRes');
+  g.innerHTML = '';
+  if (!list.length) {
+    nr.classList.add('show');
+    info.textContent = '';
+    return;
+  }
+  nr.classList.remove('show');
+  info.textContent = 'عرض ' + list.length + ' تكوين';
+  list.forEach((c, n) => {
+    const el = document.createElement('div');
+    el.className = 'cc';
+    el.style.cssText = 'animation:fu .4s ease both;animation-delay:' + (n * .035) + 's';
+    const actualIdx = courses.indexOf(c);
+    el.setAttribute('onclick', 'showCourse(' + actualIdx + ')');
+    const imgUrl = 'https://source.unsplash.com/400x220/?' + encodeURIComponent(c.img || c.name);
+    const courseNum = courses.indexOf(c) + 1;
+    el.innerHTML =
+      '<div class="cc-img-wrap">' +
+        '<div class="cc-num">' + courseNum + '</div>' +
+        '<img class="cc-img" src="' + imgUrl + '" alt="' + c.name + '" ' +
+          'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+        '<div class="cc-img-err" style="display:none">' + c.icon + '</div>' +
+      '</div>' +
+      '<div class="cc-body">' +
+        '<span class="cc-arr">←</span>' +
+        '<span class="cc-ico">' + c.icon + '</span>' +
+        '<div class="cc-name">' + c.name + '</div>' +
+        '<div class="cc-cat">' + (CATS[c.cat] || c.cat) + '</div>' +
+      '</div>';
+    g.appendChild(el);
+  });
+  // reset scroll to start
+  g.scrollLeft = 0;
+}
+
+function filterCat(cat, btn) {
+  curCat = cat;
+  document.querySelectorAll('.fb').forEach(b => b.classList.remove('act'));
+  btn.classList.add('act');
+  const list = cat === 'all' ? courses : courses.filter(c => c.cat === cat);
+  render(list);
+}
+
+function scrollGrid(dir) {
+  const g = document.getElementById('cgrid');
+  // In RTL, scrollLeft can be negative in some browsers; use scrollBy for simplicity
+  g.scrollBy({ left: dir * 260, behavior: 'smooth' });
+}
+
+function upCount() {
+  const n = courses.length;
+  ['heroN', 'aN', 'aCount'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = n;
+  });
+}
+
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── LOGIN ──
+const _H = {
+  u: 'c1c224b03cd9bc7b6a86d77f5dace40191766c485cd55dc48caf9ac873335d6f',
+  p: 'be9c40579b3950aa16eb6c1cbfef58860c323d376e59c048eb467d5f929d6c89'
+};
+async function _sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+function openLogin() {
+  document.getElementById('loginModal').classList.add('show');
+  setTimeout(() => document.getElementById('lu').focus(), 300);
+}
+function closeLogin() {
+  document.getElementById('loginModal').classList.remove('show');
+  document.getElementById('lerr').classList.remove('show');
+}
+function closeOut(e) { if (e.target.id === 'loginModal') closeLogin(); }
+async function doLogin() {
+  const u = document.getElementById('lu').value.trim();
+  const p = document.getElementById('lp').value;
+  const [hu, hp] = await Promise.all([_sha256(u), _sha256(p)]);
+  if (hu === _H.u && hp === _H.p) { closeLogin(); openAdmin(); }
+  else { document.getElementById('lerr').classList.add('show'); document.getElementById('lp').value = ''; }
+}
+
+// ── ADMIN ──
+function openAdmin() {
+  document.getElementById('adminP').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderAdmin();
+  upCount();
+}
+function closeAdmin() {
+  document.getElementById('adminP').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function renderAdmin() {
+  const list = document.getElementById('clist');
+  list.innerHTML = '';
+  courses.forEach((c, i) => {
+    const el = document.createElement('div');
+    el.className = 'ci';
+    el.innerHTML =
+      '<span style="min-width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange-l));display:flex;align-items:center;justify-content:center;font-family:Tajawal,sans-serif;font-size:.7rem;font-weight:900;color:#fff;flex-shrink:0">' + (i+1) + '</span>' +
+      '<span class="ci-ico">' + c.icon + '</span>' +
+      '<div style="flex:1"><div class="ci-name">' + c.name + '</div>' +
+      '<div class="ci-cat">' + (CATS[c.cat] || c.cat) + '</div></div>' +
+      '<button class="ci-del" onclick="delCourse(' + i + ')">🗑️ حذف</button>';
+    list.appendChild(el);
+  });
+  document.getElementById('aCount').textContent = courses.length;
+}
+function delCourse(i) {
+  if (!confirm('حذف: ' + courses[i].name + '؟')) return;
+  courses.splice(i, 1);
+  renderAdmin();
+  const list = curCat === 'all' ? courses : courses.filter(c => c.cat === curCat);
+  render(list);
+  upCount();
+  showToast('تم حذف التكوين');
+}
+function addCourse() {
+  const name = document.getElementById('ncName').value.trim();
+  const cat = document.getElementById('ncCat').value;
+  const icon = document.getElementById('ncIcon').value.trim() || '📌';
+  if (!name) { alert('الرجاء إدخال اسم التكوين'); return; }
+  courses.push({ name, cat, icon });
+  document.getElementById('ncName').value = '';
+  document.getElementById('ncIcon').value = '';
+  renderAdmin();
+  const list = curCat === 'all' ? courses : courses.filter(c => c.cat === curCat);
+  render(list);
+  upCount();
+  showToast('تمت إضافة التكوين ✅');
+}
+function savePromo() {
+  const price = document.getElementById('aPrice').value.trim();
+  const desc = document.getElementById('aDesc').value.trim();
+  if (price) document.getElementById('promoPrice').innerHTML = price + ' <span>فقط / دورتين</span>';
+  if (desc) document.getElementById('promoDesc').innerHTML = '🔥 ' + desc;
+  showToast('تم تحديث العرض ✅');
+}
+function savePhone() {
+  const ph = document.getElementById('aPhone').value.trim();
+  if (ph) document.getElementById('promoPhone').textContent = ph;
+  showToast('تم تحديث الرقم ✅');
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = '✅ ' + msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// ── COURSE DETAIL ──
+const CAT_GRAD = {
+  'تجميل': 'linear-gradient(135deg,#3d0a4f,#7b1fa2)',
+  'طبخ': 'linear-gradient(135deg,#1a3a0a,#2e7d32)',
+  'خياطة': 'linear-gradient(135deg,#0a1f3d,#1565c0)',
+  'صحة': 'linear-gradient(135deg,#1a2f0a,#388e3c)',
+  'تقني': 'linear-gradient(135deg,#0a1a3d,#0277bd)',
+  'موضى': 'linear-gradient(135deg,#3d0a2a,#c2185b)',
+  'حرف': 'linear-gradient(135deg,#2a1a0a,#e65100)',
+  'ذكاء': 'linear-gradient(135deg,#0a0a3d,#4527a0)',
+  'أخرى': 'linear-gradient(135deg,#3d2a0a,#f57c00)'
+};
+function showCourse(i) {
+  const c = courses[i];
+  document.getElementById('cdTitle').textContent = c.name;
+  document.getElementById('cdIco').textContent = c.icon;
+  document.getElementById('cdCat').textContent = CATS[c.cat] || c.cat;
+  document.getElementById('cdCatL').textContent = CATS[c.cat] || c.cat;
+  document.getElementById('cdDesc').textContent = c.desc || 'دورة احترافية متكاملة في ' + c.name + ' لجميع المستويات.';
+  document.getElementById('cdFallIco').textContent = c.icon;
+  document.getElementById('cdFallback').style.background = CAT_GRAD[c.cat] || CAT_GRAD['أخرى'];
+  document.getElementById('cdFallback').style.display = 'none';
+  const img = document.getElementById('cdImg');
+  img.style.display = 'block';
+  img.src = 'https://source.unsplash.com/600x350/?' + encodeURIComponent(c.img || c.name);
+  document.getElementById('cdOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeCourseModal() {
+  document.getElementById('cdOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function closeCourse(e) {
+  if (e.target.id === 'cdOverlay') closeCourseModal();
+}
+function waEnroll() {
+  const t = document.getElementById('cdTitle').textContent;
+  const msg = encodeURIComponent('السلام عليكم، أريد التسجيل في دورة: ' + t);
+  window.open('https://wa.me/213662369334?text=' + msg, '_blank');
+}
+
+// ── COPY ──
+function copyList() {
+  const txt = courses.map((c, i) => (i + 1) + '. ' + c.icon + ' ' + c.name).join('\n');
+  const full = '📚 قائمة تكوينات Boutique Digitale\n' + '─'.repeat(30) + '\n' + txt + '\n' + '─'.repeat(30) + '\n🎁 عرض: دورتين بـ 15,000 دج\n📲 واتساب: 0662369334';
+  navigator.clipboard.writeText(full).then(() => {
+    const b = document.querySelector('.fshr');
+    const o = b.textContent;
+    b.textContent = '✅ تم النسخ!';
+    setTimeout(() => b.textContent = o, 2200);
+  });
+}
+
+// ── WELCOME ──
+const OWNER_PHONE = '0662369334'; // رقمك أنت — غيّره إذا تغيّر
+const WC_KEY = 'bd_visitor_registered';
+
+function normalizePhone(p) {
+  return p.replace(/\s+/g,'').replace(/^(\+213|00213)/,'0');
+}
+
+function submitWelcome() {
+  const name  = document.getElementById('wcName').value.trim();
+  const phone = document.getElementById('wcPhone').value.trim();
+  const err   = document.getElementById('wcErr');
+  if (!name || !phone) { err.classList.add('show'); return; }
+  err.classList.remove('show');
+
+  const norm = normalizePhone(phone);
+  // إذا الرقم رقمك أنت، لا ترسل ولا تُسجّل — فقط أغلق
+  if (norm === normalizePhone(OWNER_PHONE)) {
+    localStorage.setItem(WC_KEY, 'owner');
+    closeWelcome();
+    return;
+  }
+
+  // إرسال المعلومات لواتسابك
+  const msg = encodeURIComponent(
+    '🔔 زبون جديد دخل إلى Boutique Digitale\n' +
+    '👤 الاسم: ' + name + '\n' +
+    '📱 الواتساب: ' + phone
+  );
+  window.open('https://wa.me/' + normalizePhone(OWNER_PHONE).replace(/^0/,'213') + '?text=' + msg, '_blank');
+
+  // حفظ في localStorage لعدم إظهار النافذة مرة أخرى
+  localStorage.setItem(WC_KEY, JSON.stringify({ name, phone, date: new Date().toISOString() }));
+  closeWelcome();
+  showToast('أهلاً ' + name + '! مرحباً بك 🎉');
+}
+
+function closeWelcome() {
+  document.getElementById('wcOverlay').classList.add('hidden');
+}
+
+function initWelcome() {
+  const saved = localStorage.getItem(WC_KEY);
+  if (saved) { closeWelcome(); return; } // سبق وسجّل
+  // أظهر النافذة بعد لحظة
+  setTimeout(() => document.getElementById('wcName').focus(), 400);
+}
+
+// ── INIT ──
+render(courses);
+upCount();
+document.getElementById('resInfo').textContent = 'عرض ' + courses.length + ' تكوين';
+initWelcome();
+</script>
+</body>
+</html>
